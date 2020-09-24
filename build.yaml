@@ -1,0 +1,22 @@
+targets:
+  $default:
+    builders:
+      flu_router|fluAppRouter_builder:
+        enabled: true
+      flu_router|fluRouter_builder:
+        enabled: true
+builders:
+  fluAppRouter_builder:
+    import: 'package:flu_router/src/builder.dart'
+    builder_factories: ['fluAppRouterBuilder']
+    build_extensions: { '.dart': ['.g.dart'] }
+    auto_apply: root_package
+    build_to: source
+  fluRouter_builder:
+    import: 'package:flu_router/src/builder.dart'
+    builder_factories: ['fluRouterBuilder']
+    build_extensions: { '.dart': ['.g.dart'] }
+    runs_before: ["flu_router|fluAppRouter_builder"]
+    auto_apply: root_package
+    build_to: source
+  
